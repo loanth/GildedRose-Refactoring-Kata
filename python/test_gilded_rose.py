@@ -116,6 +116,37 @@ class GildedRoseTest(unittest.TestCase):
         self.assertEqual(14, items[0].sell_in)
         self.assertEqual(50, items[0].quality)
 
+#Test pour le Conjured
+    def test_conjured_nom(self):
+        items = [Item("Conjured Mana Cake", 12, 17)]
+        gilded_rose = GildedRose(items)
+        gilded_rose.update_quality2()
+        self.assertEqual("Conjured Mana Cake", items[0].name)
+
+    def test_conjured_sellin_pos(self):
+        items = [Item("Conjured Mana Cake", 12, 17)]
+        gilded_rose = GildedRose(items)
+        gilded_rose.update_quality2()
+        self.assertEqual("Conjured Mana Cake", items[0].name)
+        self.assertEqual(11, items[0].sell_in)
+        self.assertEqual(15, items[0].quality)
+
+    def test_conjured_sellin_0(self):
+        items = [Item("Conjured Mana Cake", 0, 17)]
+        gilded_rose = GildedRose(items)
+        gilded_rose.update_quality2()
+        self.assertEqual("Conjured Mana Cake", items[0].name)
+        self.assertEqual(-1, items[0].sell_in)
+        self.assertEqual(15, items[0].quality)
+
+    def test_conjured_quality_0(self):
+        items = [Item("Conjured Mana Cake", 12, 0)]
+        gilded_rose = GildedRose(items)
+        gilded_rose.update_quality2()
+        self.assertEqual("Conjured Mana Cake", items[0].name)
+        self.assertEqual(11, items[0].sell_in)
+        self.assertEqual(0, items[0].quality)
+
 
         
 if __name__ == '__main__':

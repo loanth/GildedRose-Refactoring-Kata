@@ -49,9 +49,9 @@ class GildedRose(object):
                 item.quality = 0
             else:
                 item.quality -= 2
-            if item.sell_in < 0:
-                if item.quality > 0:
-                    item.quality -= 2
+        elif item.sell_in < 0:
+            if item.quality > 0:
+                item.quality -= 2
 
     def _update_other_items(self, item):
         if item.quality > 0:
