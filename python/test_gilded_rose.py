@@ -35,6 +35,37 @@ class GildedRoseTest(unittest.TestCase):
         self.assertEqual(0, items[0].sell_in)
         self.assertEqual(50, items[0].quality)
 
+
+    def test_sulfura_nom(self):
+        items = [Item("Sulfuras, Hand of Ragnaros", 0, 80)]
+        gilded_rose = GildedRose(items)
+        gilded_rose.update_quality2()
+        self.assertEqual("Sulfuras, Hand of Ragnaros", items[0].name)
+
+    def test_sulfura_sellin_pos(self):
+        items = [Item("Sulfuras, Hand of Ragnaros", 1, 80)]
+        gilded_rose = GildedRose(items)
+        gilded_rose.update_quality2()
+        self.assertEqual("Sulfuras, Hand of Ragnaros", items[0].name)
+        self.assertEqual(1, items[0].sell_in)
+        self.assertEqual(80, items[0].quality)
+
+    def test_sulfura_sellin_neg(self):
+        items = [Item("Sulfuras, Hand of Ragnaros", -1, 80)]
+        gilded_rose = GildedRose(items)
+        gilded_rose.update_quality2()
+        self.assertEqual("Sulfuras, Hand of Ragnaros", items[0].name)
+        self.assertEqual(-1, items[0].sell_in)
+        self.assertEqual(80, items[0].quality)
+
+    def test_sulfura_quality_50(self):
+        items = [Item("Sulfuras, Hand of Ragnaros", 1, 50)]
+        gilded_rose = GildedRose(items)
+        gilded_rose.update_quality2()
+        self.assertEqual("Sulfuras, Hand of Ragnaros", items[0].name)
+        self.assertEqual(1, items[0].sell_in)
+        self.assertEqual(50, items[0].quality)
+
         
 if __name__ == '__main__':
     unittest.main()
