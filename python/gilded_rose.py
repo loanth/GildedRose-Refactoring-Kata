@@ -9,16 +9,20 @@ class GildedRose(object):
         for item in self.items:
             if item.name == "Aged Brie":
                 self._update_aged_brie(item)
+                
             elif item.name == "Backstage passes to a TAFKAL80ETC concert":
                 self._update_backstage_passes(item)
+                self.items.sort(key=lambda x: x.name)
             elif item.name == "Sulfuras, Hand of Ragnaros":
                 pass
             elif item.name == "Conjured Mana Cake":
                 self._update_conjured(item)
+                self.items.sort(key=lambda x: x.name)
             else:
                 self._update_other_items(item)
 
     def _update_aged_brie(self, item):
+        item.sell_in -= 1
         if item.quality < 50:
             item.quality += 1
             if item.sell_in < 0:
