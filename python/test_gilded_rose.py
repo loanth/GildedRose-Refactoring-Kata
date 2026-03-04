@@ -147,6 +147,67 @@ class GildedRoseTest(unittest.TestCase):
         self.assertEqual(11, items[0].sell_in)
         self.assertEqual(0, items[0].quality)
 
+#Test pour les autres produits
+    def test_other_nom(self):
+        items = [Item("Elixir of the Mongoose", 12, 17)]
+        gilded_rose = GildedRose(items)
+        gilded_rose.update_quality2()
+        self.assertEqual("Elixir of the Mongoose", items[0].name)
+
+    def test_other_sellin_pos(self):
+        items = [Item("Elixir of the Mongoose", 12, 17)]
+        gilded_rose = GildedRose(items)
+        gilded_rose.update_quality2()
+        self.assertEqual("Elixir of the Mongoose", items[0].name)
+        self.assertEqual(11, items[0].sell_in)
+        self.assertEqual(16, items[0].quality)
+
+    def test_other_sellin_0(self):
+        items = [Item("Elixir of the Mongoose", 0, 17)]
+        gilded_rose = GildedRose(items)
+        gilded_rose.update_quality2()
+        self.assertEqual("Elixir of the Mongoose", items[0].name)
+        self.assertEqual(-1, items[0].sell_in)
+        self.assertEqual(15, items[0].quality)
+
+    def test_other_quality_0(self):
+        items = [Item("Elixir of the Mongoose", 12, 0)]
+        gilded_rose = GildedRose(items)
+        gilded_rose.update_quality2()
+        self.assertEqual("Elixir of the Mongoose", items[0].name)
+        self.assertEqual(11, items[0].sell_in)
+        self.assertEqual(0, items[0].quality)
+
+    def test_other_nom2(self):
+        items = [Item("+5 Dexterity Vest", 12, 17)]
+        gilded_rose = GildedRose(items)
+        gilded_rose.update_quality2()
+        self.assertEqual("+5 Dexterity Vest", items[0].name)
+
+    def test_other_sellin_pos2(self):
+        items = [Item("+5 Dexterity Vest", 12, 17)]
+        gilded_rose = GildedRose(items)
+        gilded_rose.update_quality2()
+        self.assertEqual("+5 Dexterity Vest", items[0].name)
+        self.assertEqual(11, items[0].sell_in)
+        self.assertEqual(16, items[0].quality)
+
+    def test_other_sellin_02(self):
+        items = [Item("+5 Dexterity Vest", 0, 17)]
+        gilded_rose = GildedRose(items)
+        gilded_rose.update_quality2()
+        self.assertEqual("+5 Dexterity Vest", items[0].name)
+        self.assertEqual(-1, items[0].sell_in)
+        self.assertEqual(15, items[0].quality)
+
+    def test_other_quality_02(self):
+        items = [Item("+5 Dexterity Vest", 12, 0)]
+        gilded_rose = GildedRose(items)
+        gilded_rose.update_quality2()
+        self.assertEqual("+5 Dexterity Vest", items[0].name)
+        self.assertEqual(11, items[0].sell_in)
+        self.assertEqual(0, items[0].quality)
+
 
         
 if __name__ == '__main__':
