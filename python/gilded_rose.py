@@ -5,6 +5,60 @@ class GildedRose(object):
     def __init__(self, items):
         self.items = items
 
+    def update_quality2(self):
+        for item in self.items:
+            if item.name == "Aged Brie":
+                self._update_aged_brie(item)
+            elif item.name == "Backstage passes to a TAFKAL80ETC concert":
+                self._update_backstage_passes(item)
+            elif item.name == "Sulfuras, Hand of Ragnaros":
+                pass
+            elif item.name == "Conjured Mana Cake":
+                self._update_conjured(item)
+            else:
+                self._update_other_items(item)
+
+    def _update_aged_brie(self, item):
+        if item.quality < 50:
+            item.quality += 1
+            if item.sell_in < 0:
+                if item.quality < 50:
+                    item.quality += 1
+
+    def _update_backstage_passes(self, item):
+        if item.quality < 50:
+            item.quality += 1
+            if item.sell_in < 11:
+                if item.quality < 50:
+                    item.quality += 1
+            if item.sell_in < 6:
+                if item.quality < 50:
+                    item.quality += 1
+            if item.sell_in < 0:
+                item.quality = 0
+
+    def _update_conjured(self, item):
+        if item.quality > 0:
+            item.quality -= 2
+            if item.sell_in < 0:
+                if item.quality > 0:
+                    item.quality -= 2
+
+    def _update_other_items(self, item):
+        if item.quality > 0:
+            item.quality -= 1
+            if item.name != "Sulfuras, Hand of Ragnaros":
+                item.sell_in -= 1
+                if item.sell_in < 0:
+                    if item.quality > 0:
+                        item.quality -= 1
+            else:
+                item.sell_in -= 1
+            
+            
+
+
+
     def update_quality(self):
         for item in self.items:
             if item.name != "Aged Brie" and item.name != "Backstage passes to a TAFKAL80ETC concert":
