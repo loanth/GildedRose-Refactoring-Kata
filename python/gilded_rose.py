@@ -30,12 +30,13 @@ class GildedRose(object):
                     item.quality += 1
 
     def _update_backstage_passes(self, item):
+        item.sell_in -= 1
         if item.quality < 50:
             item.quality += 1
             if item.sell_in < 11:
                 if item.quality < 50:
                     item.quality += 1
-            if item.sell_in < 6:
+            if item.sell_in < 5:
                 if item.quality < 50:
                     item.quality += 1
             if item.sell_in < 0:
