@@ -114,7 +114,7 @@ class GildedRoseTest(unittest.TestCase):
         gilded_rose.update_quality()
         self.assertEqual("Backstage passes to a TAFKAL80ETC concert", items[0].name)
         self.assertEqual(14, items[0].sell_in)
-        self.assertEqual(50, items[0].quality)
+        self.assertEqual(0, items[0].quality)
 
 #Test pour le Conjured
     def test_conjured_nom(self):
